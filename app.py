@@ -17,7 +17,7 @@ from datetime import datetime
 st.set_page_config(page_title="Video Content Summarizer", page_icon="🎥", layout="wide")
 
 
-API_URL = "http://localhost:8000"
+API_URL = "https://video-summarizer-1-qa06.onrender.com/"
 def extract_video_id(url):
     patterns = [
         r'(?:v=|\/)([0-9A-Za-z_-]{11}).*',
