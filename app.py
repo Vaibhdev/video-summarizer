@@ -416,7 +416,7 @@ elif st.session_state.active_tab == "settings":
     
     # API Configuration
     st.subheader("API Configuration")
-    api_url = st.text_input("API URL", value="http://localhost:8000")
+    api_url = st.text_input("API URL", value=API_URL)
     
     if st.button("Save Settings"):
         # In a real app, you would save these settings
