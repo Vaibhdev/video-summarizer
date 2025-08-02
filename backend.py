@@ -405,7 +405,3 @@ async def download_summary(summary_id: str, format: str = "txt"):
 async def health_check():
     """Health check endpoint"""
     return {"status": "healthy", "api_version": "1.0.0"}
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
