@@ -99,13 +99,12 @@ def get_video_metadata(video_id):
     
 def get_video_transcript(video_id: str):
     try:
-        api = YouTubeTranscriptApi()
-        fetched = api.fetch(video_id)         # fetch transcript
-        data = fetched.to_raw_data()          # convert to list of dicts
-        return ' '.join([item['text'] for item in data])
+        fetched = YouTubeTranscriptApi.get_transcript(video_id)
+        return ' '.join([item['text'] for item in fetched])
+    except (TranscriptsDisabled, NoTranscriptFound):
+        return "Transcript not available for this video."
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Error getting transcript: {str(e)}")
-
+        return f"Error fetching transcript: {str(e)}"
 
 def analyze_sentiment(text):
     try:
