@@ -97,13 +97,14 @@ def get_video_metadata(video_id):
         print(f"Error getting metadata: {str(e)}")
         return {}
     
-def get_video_transcript(video_id):
+def get_video_transcript(video_id: str):
     try:
-        transcript = YouTubeTranscriptApi.get_transcript(video_id)
-        return ' '.join([item['text'] for item in transcript])
+        api = YouTubeTranscriptApi()
+        fetched = api.fetch(video_id)         # fetch transcript
+        data = fetched.to_raw_data()          # convert to list of dicts
+        return ' '.join([item['text'] for item in data])
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error getting transcript: {str(e)}")
-
 
 
 def analyze_sentiment(text):
