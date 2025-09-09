@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from langchain_community.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
-from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptFound
 import os
 from dotenv import load_dotenv
 import moviepy.editor as mp
